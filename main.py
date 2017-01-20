@@ -32,8 +32,20 @@ def main():
   keepGoing = True
   while keepGoing:
     for event in pygame.event.get():
+      # quit event
       if event.type == pygame.QUIT:
         keepGoing = False
+
+      # key events
+      elif event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
+          print("up")
+        elif event.key == pygame.K_DOWN:
+          print("down")
+        elif event.key == pygame.K_LEFT:
+          print("left")
+        elif event.key == pygame.K_RIGHT:
+          print("right")
 
     # draw sprites on screen
     games.draw(screen)
