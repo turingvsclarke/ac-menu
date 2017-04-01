@@ -4,7 +4,7 @@ width = 32
 height = 32
 
 # Represents the game windows within the menu
-class Game (pygame.sprite.Sprite):
+class Window (pygame.sprite.Sprite):
   def __init__ (self):
     pygame.sprite.Sprite.__init__ (self)
 
