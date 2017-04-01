@@ -1,19 +1,19 @@
 import pygame
-from Game import Game
+from Sprite import Sprite
 
 pygame.init ()
 
-def initGames ():
+def initSprites ():
   # create sprite group
-  games = pygame.sprite.Group ()
+  sprites = pygame.sprite.Group ()
 
   # instantiate games
-  game = Game ()
+  sprite = Sprite ()
 
-  # add games to sprite group
-  games.add (game)
+  # add sprites to sprite group
+  sprites.add (sprite)
 
-  return games
+  return sprites
 
 def main ():
   # initialize screen
@@ -21,12 +21,12 @@ def main ():
   screen = pygame.display.set_mode (size)
   screen.fill ((255, 255, 255))
 
-  # set window title
+  # set Sprite title
   title = "Arcade Menu"
   pygame.display.set_caption (title)
 
   # instantiate sprites
-  games = initGames ()
+  sprites = initSprites ()
 
   # start game loop
   keepGoing = True
@@ -48,7 +48,7 @@ def main ():
           print("right")
 
     # draw sprites on screen
-    games.draw (screen)
+    sprites.draw (screen)
 
     # update the display to reflect screen changes
     pygame.display.update ()
