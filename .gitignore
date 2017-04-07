@@ -1,5 +1,8 @@
 # JetBrains files
 .idea/*
 
-#Pycache
-__pycache__/*
+# Compiled Python
+__pycache__
+
+# Java binaries
+*.class
