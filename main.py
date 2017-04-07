@@ -43,7 +43,8 @@ def main ():
         elif event.key == pygame.K_DOWN:
           print("down")
         elif event.key == pygame.K_LEFT:
-          print("left")
+          
+	  print("left")
         elif event.key == pygame.K_RIGHT:
           print("right")
 
