@@ -1,6 +1,7 @@
 import pygame
 from Sprite import Sprite
 from InfoPane import InfoPane
+from Grid import Grid
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
@@ -22,7 +23,8 @@ def initSprites ():
 def main ():
   # initialize screene
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
-  screen = pygame.display.set_mode (window_size)
+  screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
+  # screen = pygame.display.set_mode (window_size)
   screen.fill ((255, 255, 255))
 
   screen_width = screen.get_width ()
@@ -35,8 +37,11 @@ def main ():
   # instantiate sprites
   sprites = initSprites ()
 
-  info_pane = InfoPane (screen_width * 0.75, 0, screen_width * 0.25, screen_height)
+  info_pane = InfoPane ((255, 255, 255), screen_width * 0.75, 0, screen_width * 0.25, screen_height)
   sprites.add (info_pane)
+
+  grid = Grid (0, 0, screen_width * 0.75, screen_height)
+  sprites.add (grid)
 
   # start game loop
   keepGoing = True
@@ -59,6 +64,7 @@ def main ():
 
     # draw sprites on screen
     sprites.draw (screen)
+    grid.update ()
 
     # update the display to reflect screen changes
     pygame.display.update ()
