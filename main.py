@@ -1,5 +1,9 @@
 import pygame
 from Sprite import Sprite
+from InfoPane import InfoPane
+
+WINDOW_WIDTH = 500
+WINDOW_HEIGHT = 500
 
 pygame.init ()
 
@@ -16,10 +20,13 @@ def initSprites ():
   return sprites
 
 def main ():
-  # initialize screen
-  size = (320, 240)
-  screen = pygame.display.set_mode (size)
+  # initialize screene
+  window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
+  screen = pygame.display.set_mode (window_size)
   screen.fill ((255, 255, 255))
+
+  screen_width = screen.get_width ()
+  screen_height = screen.get_height ()
 
   # set Sprite title
   title = "Arcade Menu"
@@ -27,6 +34,9 @@ def main ():
 
   # instantiate sprites
   sprites = initSprites ()
+
+  info_pane = InfoPane (screen_width * 0.75, 0, screen_width * 0.25, screen_height)
+  sprites.add (info_pane)
 
   # start game loop
   keepGoing = True
