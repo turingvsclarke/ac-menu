@@ -1,27 +1,12 @@
 import pygame
-from Sprite import Sprite
 from InfoPane import InfoPane
 from Grid import Grid
-from GameElement import GameElement
-from GameUtils import GameUtils
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
 GAMES_DIR = "./games/"
 
 pygame.init ()
-
-def initSprites ():
-  # create sprite group
-  sprites = pygame.sprite.Group ()
-
-  # instantiate games
-  sprite = Sprite ()
-
-  # add sprites to sprite group
-  sprites.add (sprite)
-
-  return sprites
 
 def main ():
   # initialize screene
@@ -38,7 +23,7 @@ def main ():
   pygame.display.set_caption (title)
 
   # instantiate sprites
-  sprites = initSprites ()
+  sprites = pygame.sprite.Group ()
 
   info_pane = InfoPane ((255, 255, 255), screen_width * 0.75, 0, screen_width * 0.25, screen_height)
   sprites.add (info_pane)

@@ -27,10 +27,10 @@ class Grid (pygame.sprite.Sprite):
     item_height = item_width * 0.75
     x_pos = 0
     y_pos = 0
-    game_element_x_pos = item_width / 4
-    game_element_y_pos = item_height / 4
-    game_element_width = item_width / 2
-    game_element_height = item_height / 2
+    game_element_x_pos = item_width / 8
+    game_element_y_pos = item_height / 8
+    game_element_width = item_width * 0.75
+    game_element_height = item_height * 0.75
 
     self.grid_elements = pygame.sprite.Group ()
 

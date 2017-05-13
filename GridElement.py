@@ -4,9 +4,6 @@ import pygame
 class GridElement (pygame.sprite.Sprite):
   def __init__ (self, game_element, color, x, y, width, height):
     pygame.sprite.Sprite.__init__ (self)
-    print (game_element.game.title)
-    print (game_element.rect.x)
-    print (game_element.rect.y)
     self.game_element = pygame.sprite.GroupSingle (game_element)
 
     self.image = pygame.Surface ((width, height))
