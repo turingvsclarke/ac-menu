@@ -1,5 +1,5 @@
 import pygame
-from InfoPane import InfoPane
+from GridElement import GridElement
 
 # Represents the game windows within the menu
 class Grid (pygame.sprite.Sprite):
@@ -22,11 +22,11 @@ class Grid (pygame.sprite.Sprite):
     x_pos = 0
     y_pos = 0
     for position in range (3):
-        info_pane = InfoPane ((0, 0, 0), x_pos, y_pos, item_width, item_height)
-        self.grid_elements.add (info_pane)
-        x_pos += item_width
+      info_pane = GridElement ((0, 0, 0), x_pos, y_pos, item_width, item_height)
+      self.grid_elements.add (info_pane)
+      x_pos += item_width
 
   def update (self):
-      pygame.sprite.Sprite.update (self)
+    pygame.sprite.Sprite.update (self)
 
-      self.grid_elements.draw (self.image)
+    self.grid_elements.draw (self.image)
