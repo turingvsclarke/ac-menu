@@ -1,13 +1,14 @@
 import pygame
+from Sprite import Sprite
 
-class GameElement (pygame.sprite.Sprite):
+class GameElement (Sprite):
   def __init__ (self, game, color, x, y, width, height):
-    pygame.sprite.Sprite.__init__ (self)
+    # call to super
+    game_element_image = pygame.Surface ((width, height))
+    game_element_image.fill (color)
+    Sprite.__init__ (self, game_element_image, x, y, width, height)
+
     self.game = game
 
-    self.image = pygame.Surface ((width, height))
-    self.image.fill (color)
-
-    self.rect = self.image.get_rect ()
-    self.rect.x = x
-    self.rect.y = y
+  def update (self):
+    Sprite.update (self)

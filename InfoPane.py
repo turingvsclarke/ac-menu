@@ -1,13 +1,13 @@
 import pygame
+from Sprite import Sprite
 
 # Represents the game windows within the menu
-class InfoPane (pygame.sprite.Sprite):
+class InfoPane (Sprite):
   def __init__ (self, color, x, y, width, height):
-    pygame.sprite.Sprite.__init__ (self)
+    # call to super
+    info_pane_image = pygame.Surface ((width, height))
+    info_pane_image.fill (color)
+    Sprite.__init__ (self, info_pane_image, x, y, width, height)
 
-    self.image = pygame.Surface ((width, height))
-    self.image.fill (color)
-
-    self.rect = self.image.get_rect ()
-    self.rect.x = x
-    self.rect.y = y
+  def update (self):
+    Sprite.update (self)
