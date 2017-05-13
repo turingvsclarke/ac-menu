@@ -5,7 +5,7 @@ from GameUtils import GameUtils
 from GameElement import GameElement
 
 # Represents the game windows within the menu
-class Grid (pygame.sprite.Sprite):
+class Grid (Sprite):
   def __init__ (self, games_dir, x, y, width, height):
     # call to super
     grid_image = pygame.Surface ((width, height))
@@ -49,6 +49,10 @@ class Grid (pygame.sprite.Sprite):
                                   game_element_height)
       grid_element = GridElement (game_element, grid_element_color, x_pos, y_pos, item_width, item_height)
       self.grid_elements.add (grid_element)
+
+    self.selected = 0
+    elements = self.grid_elements.sprites ()
+    elements[self.selected].toggle_selected ()
 
   def update (self):
     Sprite.update (self)
