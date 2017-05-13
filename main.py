@@ -2,9 +2,12 @@ import pygame
 from Sprite import Sprite
 from InfoPane import InfoPane
 from Grid import Grid
+from GameElement import GameElement
+from GameUtils import GameUtils
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
+GAMES_DIR = "./games/"
 
 pygame.init ()
 
@@ -40,7 +43,7 @@ def main ():
   info_pane = InfoPane ((255, 255, 255), screen_width * 0.75, 0, screen_width * 0.25, screen_height)
   sprites.add (info_pane)
 
-  grid = Grid (0, 0, screen_width * 0.75, screen_height)
+  grid = Grid (GAMES_DIR, 0, 0, screen_width * 0.75, screen_height)
   sprites.add (grid)
 
   # start game loop
@@ -54,14 +57,14 @@ def main ():
       # key events
       elif event.type == pygame.KEYDOWN:
         if event.key == pygame.K_UP:
-          print("up")
+          print ("up")
         elif event.key == pygame.K_DOWN:
-          print("down")
+          print ("down")
         elif event.key == pygame.K_LEFT:
-          
-	  print("left")
+
+          print ("left")
         elif event.key == pygame.K_RIGHT:
-          print("right")
+          print ("right")
 
     # draw sprites on screen
     sprites.draw (screen)
