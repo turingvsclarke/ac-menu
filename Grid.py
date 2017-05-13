@@ -5,7 +5,7 @@ from GameUtils import GameUtils
 from GameElement import GameElement
 
 # Represents the game windows within the menu
-class Grid (pygame.sprite.Sprite):
+class Grid (Sprite):
   def __init__ (self, games_dir, x, y, width, height):
     # call to super
     grid_image = pygame.Surface ((width, height))
