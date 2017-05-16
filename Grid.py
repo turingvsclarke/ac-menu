@@ -16,8 +16,8 @@ class Grid (Sprite):
     games = GameUtils.get_all (games_dir)
 
     # initializing group of grid elements
-    row_size = 3
-    item_width = width / row_size
+    self.row_length = 3
+    item_width = width / self.row_length
     item_height = item_width * 0.75
     x_pos = 0
     y_pos = 0
@@ -36,7 +36,7 @@ class Grid (Sprite):
 
       # update next elements position
       if (index != 0):
-        wrap = ((index % row_size) == 0)
+        wrap = (index % self.row_length) == 0
         if wrap:
           row_count += 1
           x_pos = 0
@@ -58,3 +58,15 @@ class Grid (Sprite):
     Sprite.update (self)
     self.grid_elements.update ()
     self.grid_elements.draw (self.image)
+
+  def getGridElements (self):
+    return self.grid_elements
+
+  def getSelected (self):
+    return self.selected
+
+  def setSelected (self, selected):
+    self.selected = selected
+
+  def getRowLength (self):
+    return self.row_length
