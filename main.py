@@ -1,6 +1,7 @@
 import pygame
 from InfoPane import InfoPane
 from Grid import Grid
+from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
@@ -31,28 +32,34 @@ def main ():
   grid = Grid (GAMES_DIR, 0, 0, screen_width * 0.75, screen_height)
   sprites.add (grid)
 
+  factory = NavigationCommandFlyweightFactory ()
+
   # start game loop
   keepGoing = True
   while keepGoing:
+
     for event in pygame.event.get ():
+      command = None
+
       # quit event
       if event.type == pygame.QUIT:
         keepGoing = False
+        break
 
       # key events
       elif event.type == pygame.KEYDOWN:
         if event.key == pygame.K_UP:
           # navigate up
-          pass
+          factory.create_up_command ().execute (grid)
         elif event.key == pygame.K_DOWN:
           # navigate down
-          pass
+          factory.create_down_command ().execute (grid)
         elif event.key == pygame.K_LEFT:
           # navigate left
-          pass
+          factory.create_left_command ().execute (grid)
         elif event.key == pygame.K_RIGHT:
           # navigate right
-          pass
+          factory.create_right_command ().execute (grid)
 
     # draw sprites on screen
     sprites.draw (screen)
