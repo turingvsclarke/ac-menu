@@ -1,14 +1,18 @@
+from abc import abstractmethod
+
 import pygame
 
-width = 32
-height = 32
-
-# Represents the game windows within the menu
 class Sprite (pygame.sprite.Sprite):
-  def __init__ (self):
+  def __init__ (self, image, x, y, width, height):
     pygame.sprite.Sprite.__init__ (self)
 
-    self.image = pygame.Surface ((width, height))
-    self.image.fill ((0, 0, 0))
-
+    self.image = image
     self.rect = self.image.get_rect ()
+    self.rect.x = x
+    self.rect.y = y
+    self.width = width
+    self.height = height
+
+  @abstractmethod
+  def update (self):
+    pygame.sprite.Sprite.update (self)
