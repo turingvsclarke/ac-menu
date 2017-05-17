@@ -19,7 +19,7 @@ class UpCommand (NavigationCommand):
       rows = (size % row_length) - 1
       newSelected = (rows * row_length) + selected
       if newSelected >= size:
-        newSelected = size - 1
+        newSelected = newSelected - row_length
 
     grid.setSelected (newSelected)
 
