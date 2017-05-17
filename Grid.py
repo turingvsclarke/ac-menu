@@ -12,25 +12,39 @@ class Grid (Sprite):
     grid_image.fill ((0, 255, 0))
     Sprite.__init__ (self, grid_image, x, y, width, height)
 
+    self.row_length = 3
+    self.grid_elements = pygame.sprite.Group ()
+    self.selected = 0
+
     # retrieve all games from the games directory
     games = GameUtils.get_all (games_dir)
 
-    # initializing group of grid elements
-    self.row_length = 3
-    item_width = width / self.row_length
+    # populate the grid
+    self.populate_grid (games)
+
+    # toggle first element within the grid
+    elements = self.grid_elements.sprites ()
+    elements[self.selected].toggle_selected ()
+
+  def populate_grid (self, games):
+    # determine the dimensions of the grid element
+    item_width = self.width / self.row_length
     item_height = item_width * 0.75
-    x_pos = 0
-    y_pos = 0
+
+    # determine the dimensions of the interior game element
     game_element_x_pos = item_width / 8
     game_element_y_pos = item_height / 8
     game_element_width = item_width * 0.75
     game_element_height = item_height * 0.75
+
     grid_element_color = (0, 0, 0)
 
-    # populate array of grid elements
-    self.grid_elements = pygame.sprite.Group ()
-
+    # used to calculate new elements position during population
+    x_pos = 0
+    y_pos = 0
     row_count = 0
+
+    # populate array of grid elements
     for index in range (len (games)):
       game = games[index]
 
@@ -49,10 +63,6 @@ class Grid (Sprite):
                                   game_element_height)
       grid_element = GridElement (game_element, grid_element_color, x_pos, y_pos, item_width, item_height)
       self.grid_elements.add (grid_element)
-
-    self.selected = 0
-    elements = self.grid_elements.sprites ()
-    elements[self.selected].toggle_selected ()
 
   def update (self):
     Sprite.update (self)
