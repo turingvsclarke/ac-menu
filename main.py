@@ -42,14 +42,17 @@ def main ():
       # key events
       elif event.type == pygame.KEYDOWN:
         if event.key == pygame.K_UP:
-          print ("up")
+          # navigate up
+          pass
         elif event.key == pygame.K_DOWN:
-          print ("down")
+          # navigate down
+          pass
         elif event.key == pygame.K_LEFT:
-
-          print ("left")
+          # navigate left
+          pass
         elif event.key == pygame.K_RIGHT:
-          print ("right")
+          # navigate right
+          pass
 
     # draw sprites on screen
     sprites.draw (screen)

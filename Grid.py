@@ -50,6 +50,10 @@ class Grid (Sprite):
       grid_element = GridElement (game_element, grid_element_color, x_pos, y_pos, item_width, item_height)
       self.grid_elements.add (grid_element)
 
+    self.selected = 0
+    elements = self.grid_elements.sprites ()
+    elements[self.selected].toggle_selected ()
+
   def update (self):
     Sprite.update (self)
     self.grid_elements.update ()
