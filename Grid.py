@@ -4,15 +4,21 @@ from GridElement import GridElement
 from GameUtils import GameUtils
 from GameElement import GameElement
 
+ROW_LENGTH = 3
+BLUE = (0, 0 , 255)
+GREEN = (0, 255, 0)
+BLACK = (0, 0, 0)
+
 # Represents the game windows within the menu
 class Grid (Sprite):
   def __init__ (self, games_dir, x, y, width, height):
     # call to super
-    grid_image = pygame.Surface ((width, height))
-    grid_image.fill ((0, 255, 0))
+    dimensions = (width, height)
+    grid_image = pygame.Surface (dimensions)
+    grid_image.fill (GREEN)
     Sprite.__init__ (self, grid_image, x, y, width, height)
 
-    self.row_length = 3
+    self.row_length = ROW_LENGTH
     self.grid_elements = pygame.sprite.Group ()
     self.selected = 0
 
@@ -37,8 +43,6 @@ class Grid (Sprite):
     game_element_width = item_width * 0.75
     game_element_height = item_height * 0.75
 
-    grid_element_color = (0, 0, 0)
-
     # used to calculate new elements position during population
     x_pos = 0
     y_pos = 0
@@ -59,9 +63,9 @@ class Grid (Sprite):
           x_pos += item_width
 
       # add element to grid_elements sprite group
-      game_element = GameElement (game, (0, 0, 255), game_element_x_pos, game_element_y_pos, game_element_width,
+      game_element = GameElement (game, BLUE, game_element_x_pos, game_element_y_pos, game_element_width,
                                   game_element_height)
-      grid_element = GridElement (game_element, grid_element_color, x_pos, y_pos, item_width, item_height)
+      grid_element = GridElement (game_element, BLACK, x_pos, y_pos, item_width, item_height)
       self.grid_elements.add (grid_element)
 
   def update (self):
