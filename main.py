@@ -9,8 +9,8 @@ GAMES_DIR = "./games/"
 
 pygame.init ()
 
-def main ():
-  # initialize screene
+def start_menu ():
+  # initialize screens
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
   # screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
   screen = pygame.display.set_mode (window_size)
@@ -69,6 +69,9 @@ def main ():
     pygame.display.update ()
 
   pygame.quit ()
+
+def main ():
+  start_menu ()
 
 if __name__ == "__main__":
   main ()
