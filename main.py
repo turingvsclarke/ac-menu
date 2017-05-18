@@ -48,18 +48,23 @@ def start_menu ():
 
       # key events
       elif event.type == pygame.KEYDOWN:
+        command = None
+
         if event.key == pygame.K_UP:
           # navigate up
-          factory.create_up_command ().execute (grid)
+          command = factory.create_up_command ()
         elif event.key == pygame.K_DOWN:
           # navigate down
-          factory.create_down_command ().execute (grid)
+          command = factory.create_down_command ()
         elif event.key == pygame.K_LEFT:
           # navigate left
-          factory.create_left_command ().execute (grid)
+          command = factory.create_left_command ()
         elif event.key == pygame.K_RIGHT:
           # navigate right
-          factory.create_right_command ().execute (grid)
+          command = factory.create_right_command ()
+
+        if command is not None:
+          command.execute (grid)
 
     # draw sprites on screen
     sprites.draw (screen)
