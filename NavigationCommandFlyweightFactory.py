@@ -8,31 +8,31 @@ class NavigationCommandFlyweightFactory (object):
   def __init__ (self):
     object.__init__ (self)
 
-    self.leftCommand_ = None
-    self.rightCommand_ = None
-    self.upCommand_ = None
-    self.downCommand_ = None
+    self.leftCommand = None
+    self.rightCommand = None
+    self.upCommand = None
+    self.downCommand = None
 
   def create_left_command (self):
-    if self.leftCommand_ is None:
-      self.leftCommand_ = LeftCommand ()
+    if self.leftCommand is None:
+      self.leftCommand = LeftCommand ()
 
-    return self.leftCommand_
+    return self.leftCommand
 
   def create_right_command (self):
-    if self.rightCommand_ is None:
-      self.rightCommand_ = RightCommand ()
+    if self.rightCommand is None:
+      self.rightCommand = RightCommand ()
 
-    return self.rightCommand_
+    return self.rightCommand
 
   def create_up_command (self):
-    if self.upCommand_ is None:
-      self.upCommand_ = UpCommand ()
+    if self.upCommand is None:
+      self.upCommand = UpCommand ()
 
-    return self.upCommand_
+    return self.upCommand
 
   def create_down_command (self):
-    if self.downCommand_ is None:
-      self.downCommand_ = DownCommand ()
+    if self.downCommand is None:
+      self.downCommand = DownCommand ()
 
-    return self.downCommand_
+    return self.downCommand

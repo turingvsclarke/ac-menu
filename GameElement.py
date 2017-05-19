@@ -13,3 +13,6 @@ class GameElement (Sprite):
 
   def update (self):
     Sprite.update (self)
+
+  def get_game (self):
+    return self.game
