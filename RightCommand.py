@@ -5,16 +5,16 @@ class RightCommand (NavigationCommand):
     NavigationCommand.__init__ (self)
 
   def execute (self, grid):
-    sprites = grid.getGridElements ().sprites ()
-    selected = grid.getSelected ()
+    navigation_elements = grid.get_navigation_elements ()
+    selected = grid.get_selected ()
 
     # unselect previous grid element
-    sprites[selected].toggle_selected ()
+    navigation_elements[selected].toggle_selected ()
 
     # calculate new selected element
-    newSelected = (selected + 1) % len (sprites)
+    new_selected = (selected + 1) % len (navigation_elements)
 
-    grid.setSelected (newSelected)
+    grid.set_selected (new_selected)
 
     # select new grid element
-    sprites[newSelected].toggle_selected ()
+    navigation_elements[new_selected].toggle_selected ()

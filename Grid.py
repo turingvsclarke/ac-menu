@@ -19,6 +19,7 @@ class Grid (Sprite):
     Sprite.__init__ (self, grid_image, x, y, width, height)
 
     self.row_length = ROW_LENGTH
+    self.navigation_elements = []
     self.grid_elements = pygame.sprite.Group ()
     self.selected = 0
 
@@ -66,6 +67,11 @@ class Grid (Sprite):
       game_element = GameElement (game, BLUE, game_element_x_pos, game_element_y_pos, game_element_width,
                                   game_element_height)
       grid_element = GridElement (game_element, BLACK, x_pos, y_pos, item_width, item_height)
+
+      # add element to the navigation element array
+      self.navigation_elements.append (grid_element)
+
+      # add element to the sprite group
       self.grid_elements.add (grid_element)
 
   def update (self):
@@ -73,14 +79,17 @@ class Grid (Sprite):
     self.grid_elements.update ()
     self.grid_elements.draw (self.image)
 
-  def getGridElements (self):
+  def get_navigation_elements (self):
+    return self.navigation_elements
+
+  def get_grid_elements (self):
     return self.grid_elements
 
-  def getSelected (self):
+  def get_selected (self):
     return self.selected
 
-  def setSelected (self, selected):
+  def set_selected (self, selected):
     self.selected = selected
 
-  def getRowLength (self):
+  def get_row_length (self):
     return self.row_length

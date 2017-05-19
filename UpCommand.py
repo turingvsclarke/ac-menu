@@ -5,23 +5,23 @@ class UpCommand (NavigationCommand):
     NavigationCommand.__init__ (self)
 
   def execute (self, grid):
-    sprites = grid.getGridElements ().sprites ()
-    size = len (sprites)
-    selected = grid.getSelected ()
-    row_length = grid.getRowLength ()
+    navigation_elements = grid.get_navigation_elements ()
+    size = len (navigation_elements)
+    selected = grid.get_selected ()
+    row_length = grid.get_row_length ()
 
     # unselect previous grid element
-    sprites[selected].toggle_selected ()
+    navigation_elements[selected].toggle_selected ()
 
     # calculate new selected element
-    newSelected = selected - row_length
-    if newSelected < 0:
+    new_selected = selected - row_length
+    if new_selected < 0:
       rows = (size % row_length) - 1
-      newSelected = (rows * row_length) + selected
-      if newSelected >= size:
-        newSelected = newSelected - row_length
+      new_selected = (rows * row_length) + selected
+      if new_selected >= size:
+        new_selected = new_selected - row_length
 
-    grid.setSelected (newSelected)
+    grid.set_selected (new_selected)
 
     # select new grid element
-    sprites[newSelected].toggle_selected ()
+    navigation_elements[new_selected].toggle_selected ()

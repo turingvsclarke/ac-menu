@@ -5,19 +5,19 @@ class DownCommand (NavigationCommand):
     NavigationCommand.__init__ (self)
 
   def execute (self, grid):
-    sprites = grid.getGridElements ().sprites ()
-    selected = grid.getSelected ()
-    row_length = grid.getRowLength ()
+    navigation_elements = grid.get_navigation_elements ()
+    selected = grid.get_selected ()
+    row_length = grid.get_row_length ()
 
     # unselect previous grid element
-    sprites[selected].toggle_selected ()
+    navigation_elements[selected].toggle_selected ()
 
     # calculate new selected element
-    newSelected = selected + row_length
-    if newSelected >= len (sprites):
-      newSelected = selected % row_length
+    new_selected = selected + row_length
+    if new_selected >= len (navigation_elements):
+      new_selected = selected % row_length
 
-    grid.setSelected (newSelected)
+    grid.set_selected (new_selected)
 
     # select new grid element
-    sprites[newSelected].toggle_selected ()
+    navigation_elements[new_selected].toggle_selected ()
