@@ -5,7 +5,8 @@ from Sprite import Sprite
 class InfoPane (Sprite):
   def __init__ (self, color, x, y, width, height):
     # call to super
-    info_pane_image = pygame.Surface ((width, height))
+    dimensions = (width, height)
+    info_pane_image = pygame.Surface (dimensions)
     info_pane_image.fill (color)
     Sprite.__init__ (self, info_pane_image, x, y, width, height)
 

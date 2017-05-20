@@ -7,9 +7,10 @@ CYAN = (0, 255, 255)
 class GridElement (Sprite):
   def __init__ (self, game_element, color, x, y, width, height):
     # call to super
-    self.unselected_image = pygame.Surface ((width, height))
+    dimensions = (width, height)
+    self.unselected_image = pygame.Surface (dimensions)
     self.unselected_image.fill (color)
-    self.selected_image = pygame.Surface ((width, height))
+    self.selected_image = pygame.Surface (dimensions)
     self.selected_image.fill (CYAN)
 
     Sprite.__init__ (self, self.unselected_image, x, y, width, height)

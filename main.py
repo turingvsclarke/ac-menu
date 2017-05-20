@@ -1,6 +1,7 @@
 import pygame
 from InfoPane import InfoPane
 from Grid import Grid
+from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
@@ -8,8 +9,8 @@ GAMES_DIR = "./games/"
 
 pygame.init ()
 
-def main ():
-  # initialize screene
+def start_menu ():
+  # initialize screens
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
   # screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
   screen = pygame.display.set_mode (window_size)
@@ -31,28 +32,39 @@ def main ():
   grid = Grid (GAMES_DIR, 0, 0, screen_width * 0.75, screen_height)
   sprites.add (grid)
 
+  factory = NavigationCommandFlyweightFactory ()
+
   # start game loop
   keepGoing = True
   while keepGoing:
+
     for event in pygame.event.get ():
+      command = None
+
       # quit event
       if event.type == pygame.QUIT:
         keepGoing = False
+        break
 
       # key events
       elif event.type == pygame.KEYDOWN:
+        command = None
+
         if event.key == pygame.K_UP:
           # navigate up
-          pass
+          command = factory.create_up_command ()
         elif event.key == pygame.K_DOWN:
           # navigate down
-          pass
+          command = factory.create_down_command ()
         elif event.key == pygame.K_LEFT:
           # navigate left
-          pass
+          command = factory.create_left_command ()
         elif event.key == pygame.K_RIGHT:
           # navigate right
-          pass
+          command = factory.create_right_command ()
+
+        if command is not None:
+          command.execute (grid)
 
     # draw sprites on screen
     sprites.draw (screen)
@@ -62,6 +74,9 @@ def main ():
     pygame.display.update ()
 
   pygame.quit ()
+
+def main ():
+  start_menu ()
 
 if __name__ == "__main__":
   main ()

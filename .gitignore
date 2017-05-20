@@ -3,6 +3,10 @@
 
 # Compiled Python
 __pycache__
+.pyc
 
 # Java binaries
 *.class
+
+#makefile
+makefile

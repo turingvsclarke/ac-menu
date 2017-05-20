@@ -16,3 +16,21 @@ class Sprite (pygame.sprite.Sprite):
   @abstractmethod
   def update (self):
     pygame.sprite.Sprite.update (self)
+
+  def get_image (self):
+    return self.image
+
+  def get_rect (self):
+    return self.rect
+
+  def get_x (self):
+    return self.rect.x
+
+  def get_y (self):
+    return self.rect.y
+
+  def get_width (self):
+    return self.width
+
+  def get_height (self):
+    return self.height
