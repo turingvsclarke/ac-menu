@@ -30,8 +30,7 @@ class Grid (Sprite):
     self.populate_grid (games)
 
     # toggle first element within the grid
-    elements = self.grid_elements.sprites ()
-    elements[self.selected].toggle_selected ()
+    self.navigation_elements[self.selected].toggle_selected ()
 
   def populate_grid (self, games):
     # determine the dimensions of the grid element
