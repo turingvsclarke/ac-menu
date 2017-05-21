@@ -50,17 +50,20 @@ def start_menu ():
       elif event.type == pygame.KEYDOWN:
         command = None
 
-        if event.key == pygame.K_UP:
-          # navigate up
+        # navigate up
+        if event.key == pygame.K_w:
           command = factory.create_up_command ()
-        elif event.key == pygame.K_DOWN:
-          # navigate down
+
+        # navigate down
+        elif event.key == pygame.K_s:
           command = factory.create_down_command ()
-        elif event.key == pygame.K_LEFT:
-          # navigate left
+
+        # navigate left
+        elif event.key == pygame.K_a:
           command = factory.create_left_command ()
-        elif event.key == pygame.K_RIGHT:
-          # navigate right
+
+        # navigate right
+        elif event.key == pygame.K_d:
           command = factory.create_right_command ()
 
         if command is not None:
