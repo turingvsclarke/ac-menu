@@ -6,6 +6,7 @@ from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
 GAMES_DIR = "./games/"
+WHITE = (255, 255, 255)
 
 pygame.init ()
 
@@ -14,7 +15,7 @@ def start_menu ():
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
   # screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
   screen = pygame.display.set_mode (window_size)
-  screen.fill ((255, 255, 255))
+  screen.fill (WHITE)
 
   screen_width = screen.get_width ()
   screen_height = screen.get_height ()
@@ -26,7 +27,7 @@ def start_menu ():
   # instantiate sprites
   sprites = pygame.sprite.Group ()
 
-  info_pane = InfoPane ((255, 255, 255), screen_width * 0.75, 0, screen_width * 0.25, screen_height)
+  info_pane = InfoPane (WHITE, screen_width * 0.75, 0, screen_width * 0.25, screen_height)
   sprites.add (info_pane)
 
   grid = Grid (GAMES_DIR, 0, 0, screen_width * 0.75, screen_height)
@@ -65,6 +66,18 @@ def start_menu ():
         # navigate right
         elif event.key == pygame.K_d:
           command = factory.create_right_command ()
+
+        # page left
+        elif event.key == pygame.K_LEFT:
+          command = factory.create_page_left_command ()
+
+        # page right
+        elif event.key == pygame.K_RIGHT:
+          command = factory.create_page_right_command ()
+
+        elif event.key == pygame.K_ESCAPE:
+          keepGoing = False
+          break
 
         if command is not None:
           command.execute (grid)
