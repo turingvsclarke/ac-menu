@@ -1,10 +1,11 @@
 import pygame
 from Sprite import Sprite
-from GridElement import GridElement
 from GameUtils import GameUtils
-from GameElement import GameElement
+from Page import Page
+from math import ceil
 
 ROW_LENGTH = 3
+PAGE_SIZE = 12
 BLUE = (0, 0 , 255)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
@@ -18,77 +19,59 @@ class Grid (Sprite):
     grid_image.fill (GREEN)
     Sprite.__init__ (self, grid_image, x, y, width, height)
 
-    self.row_length = ROW_LENGTH
-    self.navigation_elements = []
-    self.grid_elements = pygame.sprite.Group ()
-    self.selected = 0
-
     # retrieve all games from the games directory
     games = GameUtils.get_all (games_dir)
 
-    # populate the grid
-    self.populate_grid (games)
+    self.page_index = 0
+    self.page_size = PAGE_SIZE
+    self.page_count = ceil (len (games) / self.page_size)
+    self.pages = self.create_pages (games)
 
-    # toggle first element within the grid
-    self.navigation_elements[self.selected].toggle_selected ()
+    self.page = pygame.sprite.GroupSingle ()
+    self.page.add (self.pages[self.page_index])
 
-  def populate_grid (self, games):
-    # determine the dimensions of the grid element
-    item_width = self.width / self.row_length
-    item_height = item_width * 0.75
+  def create_pages (self, games):
+    pages = []
 
-    # determine the dimensions of the interior game element
-    game_element_x_pos = item_width / 8
-    game_element_y_pos = item_height / 8
-    game_element_width = item_width * 0.75
-    game_element_height = item_height * 0.75
-
-    # used to calculate new elements position during population
-    x_pos = 0
-    y_pos = 0
-    row_count = 0
-
-    # populate array of grid elements
+    page_games = []
     for index in range (len (games)):
+      # after page_games has hit the page size limit, create a page and reset page_games
+      if ((index % self.page_size) == 0) and (index != 0):
+        page = Page (page_games, self.rect.x, self.rect.y, self.width, self.height)
+        pages.append (page)
+        page_games.clear ()
+
+      # add the game to page_games
       game = games[index]
+      page_games.append (game)
 
-      # update next elements position
-      if (index != 0):
-        wrap = (index % self.row_length) == 0
-        if wrap:
-          row_count += 1
-          x_pos = 0
-          y_pos = row_count * item_height
-        else:
-          x_pos += item_width
+    # create last page for the remaining games
+    page = Page (page_games, self.rect.x, self.rect.y, self.width, self.height)
+    pages.append (page)
 
-      # add element to grid_elements sprite group
-      game_element = GameElement (game, BLUE, game_element_x_pos, game_element_y_pos, game_element_width,
-                                  game_element_height)
-      grid_element = GridElement (game_element, BLACK, x_pos, y_pos, item_width, item_height)
-
-      # add element to the navigation element array
-      self.navigation_elements.append (grid_element)
-
-      # add element to the sprite group
-      self.grid_elements.add (grid_element)
+    return pages
 
   def update (self):
     Sprite.update (self)
-    self.grid_elements.update ()
-    self.grid_elements.draw (self.image)
 
-  def get_navigation_elements (self):
-    return self.navigation_elements
+    self.pages[self.page_index].update ()
+    self.page.draw (self.image)
 
-  def get_grid_elements (self):
-    return self.grid_elements
+  def get_pages (self):
+    return self.pages
 
-  def get_selected (self):
-    return self.selected
+  def get_current_page (self):
+    return self.pages[self.page_index]
 
-  def set_selected (self, selected):
-    self.selected = selected
+  def get_page_index (self):
+    return self.page_index
 
-  def get_row_length (self):
-    return self.row_length
+  def set_page_index (self, new_page_index):
+    self.page_index = new_page_index
+    self.page.add (self.pages[self.page_index])
+
+  def get_page_count (self):
+    return self.page_count
+
+  def get_page_size (self):
+    return self.page_size

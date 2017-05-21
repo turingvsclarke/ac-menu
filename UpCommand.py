@@ -5,10 +5,11 @@ class UpCommand (NavigationCommand):
     NavigationCommand.__init__ (self)
 
   def execute (self, grid):
-    navigation_elements = grid.get_navigation_elements ()
+    page = grid.get_current_page ()
+    navigation_elements = page.get_navigation_elements ()
     size = len (navigation_elements)
-    selected = grid.get_selected ()
-    row_length = grid.get_row_length ()
+    selected = page.get_selected ()
+    row_length = page.get_row_length ()
 
     # unselect previous grid element
     navigation_elements[selected].toggle_selected ()
