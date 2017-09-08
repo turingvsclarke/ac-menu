@@ -3,8 +3,8 @@ from InfoPane import InfoPane
 from Grid import Grid
 from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
 
-WINDOW_WIDTH = 500
-WINDOW_HEIGHT = 500
+WINDOW_WIDTH = 1080
+WINDOW_HEIGHT = 720
 GAMES_DIR = "./games/"
 WHITE = (255, 255, 255)
 
