@@ -5,4 +5,4 @@ class PageEnterCommand (NavigationCommand):
         NavigationCommand.__init__(self)
 
     def execute(self, grid):
-        print(page.get_selected())
+        print(grid.get_current_page().get_selected())
