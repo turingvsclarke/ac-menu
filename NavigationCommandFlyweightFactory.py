@@ -17,6 +17,8 @@ class NavigationCommandFlyweightFactory (object):
     self.pageLeftCommand = None
     self.pageRightCommand = None
 
+    self.pageEnterCommand = None
+
   def create_left_command (self):
     if self.leftCommand is None:
       self.leftCommand = LeftCommand ()
@@ -52,3 +54,7 @@ class NavigationCommandFlyweightFactory (object):
       self.pageRightCommand = PageRightCommand ()
 
     return self.pageRightCommand
+
+  def create_page_enter_command (self):
+    if self.pageEnterCommand is None:
+      self.pageEnterCommand = PageEnterCommand ()
