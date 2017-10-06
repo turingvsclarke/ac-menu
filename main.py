@@ -75,6 +75,9 @@ def start_menu ():
         elif event.key == pygame.K_RIGHT:
           command = factory.create_page_right_command ()
 
+        elif event.key == pygame.K_KP_ENTER:
+          command = factory.create_enter_command ()
+
         elif event.key == pygame.K_ESCAPE:
           keepGoing = False
           break
