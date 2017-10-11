@@ -1,45 +1,24 @@
 import pygame
-from InfoPane import InfoPane
-from Grid import Grid
+from Menu import Menu
 from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
 import Colors
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
-GAMES_DIR = "./games/"
 
 pygame.init ()
 
 def start_menu ():
-  # initialize screens
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
   # screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
   screen = pygame.display.set_mode (window_size)
   screen.fill (Colors.WHITE)
 
-  screen_width = screen.get_width ()
-  screen_height = screen.get_height ()
-
   # set Sprite title
   title = "Arcade Menu"
   pygame.display.set_caption (title)
 
-  # instantiate sprites
-  sprites = pygame.sprite.Group ()
-
-  # initialize the menu grid
-  grid_width = screen_width * 0.75
-  grid = Grid (GAMES_DIR, 0, 0, grid_width, screen_height)
-  sprites.add (grid)
-
-  # initialize the info pane which displays the current game info
-  info_pane_x = screen_width * 0.75
-  info_pane_y = 0
-  info_pane_width = screen_width * 0.25
-  current_game = grid.get_current_game ()
-  inf_pane_background_color = Colors.WHITE
-  info_pane = InfoPane (current_game, inf_pane_background_color, info_pane_x, info_pane_y, info_pane_width, screen_height)
-  sprites.add (info_pane)
+  menu = Menu (screen)
 
   factory = NavigationCommandFlyweightFactory ()
 
@@ -86,12 +65,9 @@ def start_menu ():
           break
 
         if command is not None:
-          command.execute (grid)
-          info_pane.set_info (grid.get_current_game ())
+          menu.process (command)
 
-    # draw sprites on screen
-    sprites.draw (screen)
-    sprites.update ()
+    menu.update ()
 
     # update the display to reflect screen changes
     pygame.display.update ()
