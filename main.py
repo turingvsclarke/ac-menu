@@ -2,11 +2,11 @@ import pygame
 from InfoPane import InfoPane
 from Grid import Grid
 from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
+import Colors
 
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
 GAMES_DIR = "./games/"
-WHITE = (255, 255, 255)
 
 pygame.init ()
 
@@ -15,7 +15,7 @@ def start_menu ():
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
   # screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
   screen = pygame.display.set_mode (window_size)
-  screen.fill (WHITE)
+  screen.fill (Colors.WHITE)
 
   screen_width = screen.get_width ()
   screen_height = screen.get_height ()
@@ -27,11 +27,19 @@ def start_menu ():
   # instantiate sprites
   sprites = pygame.sprite.Group ()
 
-  info_pane = InfoPane (WHITE, screen_width * 0.75, 0, screen_width * 0.25, screen_height)
-  sprites.add (info_pane)
-
-  grid = Grid (GAMES_DIR, 0, 0, screen_width * 0.75, screen_height)
+  # initialize the menu grid
+  grid_width = screen_width * 0.75
+  grid = Grid (GAMES_DIR, 0, 0, grid_width, screen_height)
   sprites.add (grid)
+
+  # initialize the info pane which displays the current game info
+  info_pane_x = screen_width * 0.75
+  info_pane_y = 0
+  info_pane_width = screen_width * 0.25
+  current_game = grid.get_current_game ()
+  inf_pane_background_color = Colors.WHITE
+  info_pane = InfoPane (current_game, inf_pane_background_color, info_pane_x, info_pane_y, info_pane_width, screen_height)
+  sprites.add (info_pane)
 
   factory = NavigationCommandFlyweightFactory ()
 
@@ -40,8 +48,6 @@ def start_menu ():
   while keepGoing:
 
     for event in pygame.event.get ():
-      command = None
-
       # quit event
       if event.type == pygame.QUIT:
         keepGoing = False
@@ -81,10 +87,11 @@ def start_menu ():
 
         if command is not None:
           command.execute (grid)
+          info_pane.set_info (grid.get_current_game ())
 
     # draw sprites on screen
     sprites.draw (screen)
-    grid.update ()
+    sprites.update ()
 
     # update the display to reflect screen changes
     pygame.display.update ()

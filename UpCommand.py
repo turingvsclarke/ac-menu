@@ -6,13 +6,13 @@ class UpCommand (NavigationCommand):
 
   def execute (self, grid):
     page = grid.get_current_page ()
-    navigation_elements = page.get_navigation_elements ()
-    size = len (navigation_elements)
+    grid_elements = page.get_grid_elements ()
+    size = len (grid_elements)
     selected = page.get_selected ()
     row_length = page.get_row_length ()
 
     # unselect previous grid element
-    navigation_elements[selected].toggle_selected ()
+    grid_elements[selected].toggle_selected ()
 
     # calculate new selected element
     new_selected = selected - row_length
@@ -25,4 +25,4 @@ class UpCommand (NavigationCommand):
     page.set_selected (new_selected)
 
     # select new grid element
-    navigation_elements[new_selected].toggle_selected ()
+    grid_elements[new_selected].toggle_selected ()
