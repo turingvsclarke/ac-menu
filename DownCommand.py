@@ -1,8 +1,8 @@
-from NavigationCommand import NavigationCommand
+from InputCommand import InputCommand
 
-class DownCommand (NavigationCommand):
+class DownCommand (InputCommand):
   def __init__ (self):
-    NavigationCommand.__init__ (self)
+    InputCommand.__init__ (self)
 
   def execute (self, grid):
     page = grid.get_current_page ()

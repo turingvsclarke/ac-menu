@@ -5,8 +5,8 @@ from DownCommand import DownCommand
 from PageLeftCommand import PageLeftCommand
 from PageRightCommand import PageRightCommand
 
-# Factory class responsible for instantiating Navigation Commands
-class NavigationCommandFlyweightFactory (object):
+# Factory class responsible for instantiating Input Commands
+class InputCommandFlyweightFactory (object):
   def __init__ (self):
     object.__init__ (self)
 
