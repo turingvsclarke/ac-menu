@@ -2,34 +2,35 @@ import pygame
 from Sprite import Sprite
 from GameElement import GameElement
 from GridElement import GridElement
+import Colors
 
 ROW_LENGTH = 3
 COL_LENGTH = 4
-PAGE_SIZE = 2
-BLUE = (0, 0 , 255)
-GREEN = (0, 255, 0)
-BLACK = (0, 0, 0)
+PAGE_SIZE = 12
 
 class Page (Sprite):
   def __init__ (self, games, x, y, width, height):
     # call to super
     dimensions = (width, height)
     page_image = pygame.Surface (dimensions)
-    page_image.fill (GREEN)
+    page_image.fill (Colors.GREEN)
     Sprite.__init__ (self, page_image, x, y, width, height)
 
     self.games = games
 
     self.row_length = ROW_LENGTH
     self.col_length = COL_LENGTH
-    self.navigation_elements = []
-    self.grid_elements = pygame.sprite.Group ()
+
+    self.grid_elements = []
+    self.grid_elements_group = pygame.sprite.Group ()
+
+    # the index of the currently selected grid element
     self.selected = 0
 
     self.populate_page ()
 
     # toggle first element within the grid
-    self.navigation_elements[self.selected].toggle_selected ()
+    self.grid_elements[self.selected].toggle_selected ()
 
   def populate_page (self):
     # determine the dimensions of the grid element
@@ -62,27 +63,31 @@ class Page (Sprite):
           x_pos += item_width
 
       # add element to grid_elements sprite group
-      game_element = GameElement (game, BLUE, game_element_x_pos, game_element_y_pos, game_element_width,
-                                  game_element_height)
-      grid_element = GridElement (game_element, BLACK, x_pos, y_pos, item_width, item_height)
+      game_element_background_color = Colors.BLUE
+      game_element = GameElement (game, game_element_background_color, game_element_x_pos, game_element_y_pos,
+                                  game_element_width, game_element_height)
 
-      # add element to the navigation element array
-      self.navigation_elements.append (grid_element)
+      grid_element_background_color = Colors.BLACK
+      grid_element = GridElement (game_element, grid_element_background_color, x_pos, y_pos, item_width, item_height)
+
+      self.grid_elements.append (grid_element)
 
       # add element to the sprite group
-      self.grid_elements.add (grid_element)
+      self.grid_elements_group.add (grid_element)
 
   def update (self):
     pygame.sprite.Sprite.update (self)
 
-    self.grid_elements.update ()
-    self.grid_elements.draw (self.image)
+    # calls update on all GridElements
+    self.grid_elements_group.update ()
+
+    self.grid_elements_group.draw (self.image)
+
+  def get_current_game (self):
+    return self.games[self.selected]
 
   def get_games (self):
     return self.games
-
-  def get_navigation_elements (self):
-    return self.navigation_elements
 
   def get_grid_elements (self):
     return self.grid_elements

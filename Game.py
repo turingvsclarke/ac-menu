@@ -3,6 +3,8 @@ import os
 class Game:
   def __init__ (self, metadata, directory):
     self.title = metadata["title"]
+    self.author = metadata["author"]
+    self.language = metadata["language"]
     self.command = metadata["command"]
     self.directory = directory
 
