@@ -1,4 +1,6 @@
 {
 	"title": "Hello E",
-	"command": "./helloE"
+	"author": "Test",
+	"language": "c",
+	"command": "./helloE",
 }

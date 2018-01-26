@@ -1,4 +1,6 @@
 {
 	"title": "Hello Java",
-	"command": "java Hello"
+	"author": "Test",
+	"language": "java",
+	"command": "java Hello",
 }
