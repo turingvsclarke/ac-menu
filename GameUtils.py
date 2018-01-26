@@ -5,6 +5,7 @@ from Game import Game
 class GameUtils:
 
   # Retrieves all Games within a given directory
+  @staticmethod
   def get_all (games_dir):
     game_dirs = os.listdir (games_dir)
     games = []
