@@ -1,6 +1,6 @@
 import pygame
 from Menu import Menu
-from NavigationCommandFlyweightFactory import NavigationCommandFlyweightFactory
+from InputCommandFlyweightFactory import InputCommandFlyweightFactory
 import Colors
 
 WINDOW_WIDTH = 500
@@ -20,7 +20,7 @@ def start_menu ():
 
   menu = Menu (screen)
 
-  factory = NavigationCommandFlyweightFactory ()
+  factory = InputCommandFlyweightFactory ()
 
   # start game loop
   keepGoing = True
