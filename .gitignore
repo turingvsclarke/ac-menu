@@ -11,3 +11,5 @@ __pycache__
 # makefile
 makefile
 
+#DS Store
+*.DS_Store
