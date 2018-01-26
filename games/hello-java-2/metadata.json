@@ -2,5 +2,5 @@
 	"title": "Hello Java",
 	"author": "Test",
 	"language": "java",
-	"command": "java Hello",
+	"command": "java Hello"
 }
