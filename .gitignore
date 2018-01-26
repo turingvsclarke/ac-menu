@@ -3,7 +3,7 @@
 
 # Compiled Python
 __pycache__
-.pyc
+*.pyc
 
 # Java binaries
 *.class
