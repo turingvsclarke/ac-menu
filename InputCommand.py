@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
-# Base class for Menu Navigation Commands
-class NavigationCommand (object):
+# Base class for Menu Input Commands
+class InputCommand (object):
   def __init__ (self):
     object.__init__ (self)
 
