@@ -93,7 +93,8 @@ class Game(): #Game Object
     def configureScreen(self):
         #this creates and returns a pygame screen
         pygame.init()
-        screen = pygame.display.set_mode((self.screenX, self.screenY), pygame.RESIZABLE)
+        #screen = pygame.display.set_mode((self.screenX, self.screenY), pygame.RESIZABLE)
+        screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         pygame.display.set_caption("Duck Hunt")
         return screen
 

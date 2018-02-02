@@ -10,8 +10,8 @@ pygame.init ()
 
 def start_menu ():
   window_size = (WINDOW_WIDTH, WINDOW_HEIGHT)
-  # screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
-  screen = pygame.display.set_mode (window_size)
+  screen = pygame.display.set_mode ((0, 0), pygame.FULLSCREEN)
+  #screen = pygame.display.set_mode (window_size)
   screen.fill (Colors.WHITE)
 
   # set Sprite title
