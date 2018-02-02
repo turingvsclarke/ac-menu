@@ -38,3 +38,8 @@ class Menu (object):
   def process (self, command):
     command.execute (self.grid)
     self.game_info_pane.set_info (self.grid.get_current_game ())
+
+  def launch(self):
+    game = self.grid.get_current_game()
+    game.launch()
+    

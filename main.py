@@ -67,6 +67,9 @@ def start_menu ():
           keepGoing = False
           break
 
+        elif event.key == pygame.K_SLASH:
+          menu.launch()
+
         if command is not None:
           menu.process (command)
 
