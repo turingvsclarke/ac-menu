@@ -7,11 +7,10 @@ class GameElement (Sprite):
     dimensions = (width, height)
     try:
       icon = pygame.image.load("{}icon.png".format(game.directory))
-      icon = pygame.transform.scale(icon, (int(width), int(height)))
+      icon = pygame.transform.scale(icon, dimensions)
     except:
       icon = pygame.Surface (dimensions)
       icon.fill (background_color)
-    icon = icon
     Sprite.__init__ (self, icon, x, y, width, height)
 
     self.game = game
