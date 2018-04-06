@@ -27,7 +27,7 @@ class Grid (Sprite):
     self.page_size = PAGE_SIZE
 
     # number of pages
-    self.page_count = ceil (len (games) / self.page_size)
+    self.page_count = int(ceil(len (games) / self.page_size))
 
     # list of Page objects
     self.pages = self.create_pages (games)

@@ -8,5 +8,8 @@ class PageRightCommand (InputCommand):
     page_index = grid.get_page_index ()
     page_count = grid.get_page_count ()
 
-    new_page = (page_index + 1) % page_count
-    grid.set_page_index (new_page)
+    if (page_index + 1) > page_count:
+      grid.set_page_index (0)
+    elif page_count != 0:
+      new_page = (page_index + 1) % page_count
+      grid.set_page_index (new_page)
