@@ -28,18 +28,18 @@ class InfoPane (Sprite):
 
     self.game = game
 
-    self.title = self.font.render (self.game.title, True, self.font_color, self.font_background_color)
+    self.title = self.font.render ("Title: {}".format(self.game.title), True, self.font_color, self.font_background_color)
     self.title_rect = self.title.get_rect ()
     self.title_rect.x = 0
     self.image.blit (self.title, self.title_rect)
 
-    self.author = self.font.render (self.game.author, True, self.font_color, self.font_background_color)
+    self.author = self.font.render ("Author: {}".format(self.game.author), True, self.font_color, self.font_background_color)
     self.author_rect = self.author.get_rect ()
     self.author_rect.x = 0
     self.author_rect.y = self.rect.y + self.title_rect.height
     self.image.blit (self.author, self.author_rect)
 
-    self.language = self.font.render (self.game.language, True, self.font_color, self.font_background_color)
+    self.language = self.font.render ("Programming Language: {}".format(self.game.language), True, self.font_color, self.font_background_color)
     self.language_rect = self.language.get_rect ()
     self.language_rect.x = 0
     self.language_rect.y = self.author_rect.y + self.author_rect.height
