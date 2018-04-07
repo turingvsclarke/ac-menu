@@ -3,8 +3,8 @@ from Menu import Menu
 from InputCommandFlyweightFactory import InputCommandFlyweightFactory
 import Colors
 
-WINDOW_WIDTH = 500
-WINDOW_HEIGHT = 500
+WINDOW_WIDTH = 1920
+WINDOW_HEIGHT = 1080
 
 pygame.init ()
 

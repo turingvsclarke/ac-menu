@@ -14,7 +14,7 @@ class Grid (Sprite):
     # call to super
     dimensions = (width, height)
     grid_image = pygame.Surface (dimensions)
-    grid_image.fill (Colors.GREEN)
+    grid_image.fill (Colors.BLACK)
     Sprite.__init__ (self, grid_image, x, y, width, height)
 
     # retrieve all games from the games directory
