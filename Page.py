@@ -38,10 +38,17 @@ class Page (Sprite):
     item_height = self.height / self.col_length
 
     # determine the dimensions of the interior game element
+<<<<<<< HEAD
     game_element_x_pos = 25
     game_element_y_pos = 13
     game_element_width = item_width * 0.9
     game_element_height = item_height * 0.9
+=======
+    game_element_x_pos = int(item_width / 8)
+    game_element_y_pos = int(item_height / 8)
+    game_element_width = int(item_width * 0.75)
+    game_element_height = int(item_height * 0.75)
+>>>>>>> 2f46a4aa38d8d58884eaafc1de1691b3cba7e5e3
 
     # used to calculate new elements position during population
     x_pos = 0
