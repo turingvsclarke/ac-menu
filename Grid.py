@@ -54,7 +54,7 @@ class Grid (Sprite):
         page = Page (page_games[:], self.rect.x, self.rect.y, self.width, self.height)
         pages.append (page)
 
-        page_games.clear()
+        page_games.clear()  
 
       # add the game to page_games
       game = games[index]
@@ -83,9 +83,6 @@ class Grid (Sprite):
 
   def get_page_index (self):
     return self.page_index
-
-  def get_page_length_index (self):
-    return self.pages_length
 
   def set_page_index (self, new_page_index):
     self.page_index = new_page_index
