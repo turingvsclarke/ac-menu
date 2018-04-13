@@ -26,9 +26,19 @@ class Menu (object):
     info_pane_y = 0
     info_pane_width = screen_width * 0.25
     current_game = self.grid.get_current_game ()
+    cur_page_index = self.grid.get_page_index()
+    page_length = self.grid.get_page_length_index()
     inf_pane_background_color = Colors.WHITE
-    self.game_info_pane = InfoPane (current_game, inf_pane_background_color, info_pane_x, info_pane_y, info_pane_width,
-                          screen_height)
+    self.game_info_pane = InfoPane (
+      current_game, 
+      inf_pane_background_color, 
+      info_pane_x, 
+      info_pane_y, 
+      info_pane_width,
+      screen_height,
+      cur_page_index,
+      page_length
+    )
     self.menu_sections.add (self.game_info_pane)
 
   def update (self):
