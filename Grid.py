@@ -31,6 +31,7 @@ class Grid (Sprite):
 
     # list of Page objects
     self.pages = self.create_pages (games)
+    self.pages_length = len(self.pages)
 
     # current_page is a cache of the currently active Page object
     self.current_page = self.pages[self.page_index]
@@ -82,6 +83,9 @@ class Grid (Sprite):
 
   def get_page_index (self):
     return self.page_index
+
+  def get_page_length_index (self):
+    return self.pages_length
 
   def set_page_index (self, new_page_index):
     self.page_index = new_page_index
