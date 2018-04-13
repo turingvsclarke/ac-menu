@@ -1,12 +1,14 @@
 import pygame
 from Sprite import Sprite
 import Colors
+import math
+
 
 # Represents the game windows within the menu
 class InfoPane (Sprite):
   def __init__ (self, game, background_color, x, y, width, height):
     # call to super
-    dimensions = (width, height)
+    dimensions = (math.floor(width), math.floor(height))
     info_pane_image = pygame.Surface (dimensions)
     self.background_color = background_color
     info_pane_image.fill (background_color)
@@ -19,6 +21,17 @@ class InfoPane (Sprite):
     self.font_background_color = Colors.WHITE
 
     self.set_info (self.game)
+
+    # Sets the logo
+    logo_height = height*0.25;
+    logo_dimensions = (math.floor(width), math.floor(logo_height))
+
+    image = pygame.Surface (logo_dimensions)
+
+    image = pygame.image.load("logo-notext.png")
+    image = pygame.transform.scale(image, logo_dimensions)
+      
+    Sprite.__init__ (self, image, x, y + height - logo_height, width, height)
 
   def update (self):
     Sprite.update (self)
