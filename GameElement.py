@@ -9,8 +9,8 @@ class GameElement (Sprite):
       icon = pygame.image.load("{}icon.png".format(game.directory))
       icon = pygame.transform.scale(icon, dimensions)
     except:
-      icon = pygame.Surface (dimensions)
-      icon.fill (background_color)
+      icon = pygame.image.load("default.png")
+      icon = pygame.transform.scale(icon, dimensions)
     Sprite.__init__ (self, icon, x, y, width, height)
 
     self.game = game
