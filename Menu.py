@@ -30,7 +30,7 @@ class Menu (object):
     page_length = self.grid.get_page_count()
     inf_pane_background_color = Colors.WHITE
     self.game_info_pane = InfoPane (
-      current_game, 
+      self.grid, 
       inf_pane_background_color, 
       info_pane_x, 
       info_pane_y, 
@@ -47,7 +47,7 @@ class Menu (object):
 
   def process (self, command):
     command.execute (self.grid)
-    self.game_info_pane.set_info (self.grid.get_current_game ())
+    self.game_info_pane.set_info (self.grid)
 
   def launch(self):
     game = self.grid.get_current_game()
