@@ -13,7 +13,7 @@ class Page (Sprite):
     # call to super
     dimensions = (width, height)
     page_image = pygame.Surface (dimensions)
-    page_image.fill (Colors.GREEN)
+    page_image.fill (Colors.BLACK)
     Sprite.__init__ (self, page_image, x, y, width, height)
 
     self.games = games
@@ -38,10 +38,10 @@ class Page (Sprite):
     item_height = self.height / self.col_length
 
     # determine the dimensions of the interior game element
-    game_element_x_pos = int(item_width / 8)
-    game_element_y_pos = int(item_height / 8)
-    game_element_width = int(item_width * 0.75)
-    game_element_height = int(item_height * 0.75)
+    game_element_x_pos = int(25)
+    game_element_y_pos = int(13)
+    game_element_width = int(item_width * 0.9)
+    game_element_height = int(item_height * 0.9)
 
     # used to calculate new elements position during population
     x_pos = 0
