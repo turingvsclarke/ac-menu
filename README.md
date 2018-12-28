@@ -1,17 +1,21 @@
 # ac-menu
-Arcade Cabinet Menu System  
+Arcade Cabinet Menu System - Starting point to open the arcade.
 
-Check out the [Wiki](https://github.com/cs-club-appdev/ac-menu/wiki)  
+Check out the [Wiki](https://github.com/cs-club-appdev/ac-menu/wiki) for information about our design and layout choices.  
 
-### Links to all ac-repositories
-  * [API Server](https://github.com/cs-club-appdev/ac-apiserver)
-  * [Key Adapter](https://github.com/cs-club-appdev/ac-keyadapter)
-  * [Menu](https://github.com/cs-club-appdev/ac-menu)
+## Requirements
 
+  * (Python 3)[https://www.python.org/downloads/]
+  * (Pygame)[https://www.pygame.org/wiki/GettingStarted]
 
-## Running the Menu
-You'll need to have python 2.7 installed to run the menu effectively
-you'll neeed to install [Pygames](https://www.pygame.org/wiki/GettingStarted) for the menu to work
-`python main.py`
-`WASD` keys to navigate games, `LEFT` and `RIGHT` keys to navigate pages, and `/` to launch a game
+## Running the Arcade Menu
+  * clone the repo.
+  * `cd` into *ac-menu* directory.
+  * run `python main.py`.
+    > Depending on your python setup, you may have to run `python3 main.py`
+
+## Navigating the Menu
+  * `WASD` to navigate between game tiles.
+  * `->` (Right) and `<-` (Left) to navigate pages.
+  * `/` to launch the game.
   
