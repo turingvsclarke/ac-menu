@@ -3,10 +3,12 @@ from Sprite import Sprite
 from GameElement import GameElement
 from GridElement import GridElement
 import Colors
+import json 
 
-ROW_LENGTH = 3
-COL_LENGTH = 4
-PAGE_SIZE = 12
+config = open ("config.json").read ()
+data = json.loads (config)
+ROW_LENGTH = data["grid"]["rowLength"]
+COL_LENGTH = data["grid"]["colLength"]
 
 class Page (Sprite):
   def __init__ (self, games, x, y, width, height):
@@ -38,8 +40,8 @@ class Page (Sprite):
     item_height = self.height / self.col_length
 
     # determine the dimensions of the interior game element
-    game_element_x_pos = int(25)
-    game_element_y_pos = int(13)
+    game_element_x_pos = int(data["gameElement"]["xPos"])
+    game_element_y_pos = int(data["gameElement"]["yPos"])
     game_element_width = int(item_width * 0.9)
     game_element_height = int(item_height * 0.9)
 

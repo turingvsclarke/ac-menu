@@ -4,9 +4,12 @@ from GameUtils import GameUtils
 from Page import Page
 from math import ceil
 import Colors
+import json
 
-ROW_LENGTH = 3
-PAGE_SIZE = 12
+config = open ("config.json").read ()
+data = json.loads (config)
+ROW_LENGTH = data["grid"]["rowLength"]
+COL_LENGTH = data["grid"]["colLength"]
 
 # Represents the game windows within the menu
 class Grid (Sprite):
@@ -24,7 +27,7 @@ class Grid (Sprite):
     self.page_index = 0
 
     # number of GridElements per page
-    self.page_size = PAGE_SIZE
+    self.page_size = ROW_LENGTH * COL_LENGTH
 
     # number of pages
     self.page_count = int(ceil(len (games) / self.page_size))
