@@ -53,8 +53,20 @@ class InfoPane (Sprite):
     
     self.cur_page = grid.get_page_index() + 1
     self.page_length = grid.get_page_count()
-    self.page_number = self.font.render ('Page: ' + str(self.cur_page) + '/' + str(self.page_length), True, self.font_color, self.font_background_color)
-    self.page_number_rect = self.title.get_rect()
-    self.page_number_rect.x = 0
-    self.page_number_rect.y = self.height - 50
-    self.image.blit (self.page_number, self.page_number_rect)
+
+    #ui page bubbles
+    circle_radius = 10
+    small_circle_radius = 7
+    circle_x = 0
+    circle_y = self.height - 50
+
+    #center of the current surface & average page #
+    image_center = int(self.image.get_width()/2)
+    page_center = (self.page_length-1)/2
+
+    #draws circles for every page
+    for i in range(0, self.page_length):
+      circle_x = image_center + int((i-page_center)*(circle_radius + 20))
+      pygame.draw.circle(self.image, pygame.Color("black"), (circle_x, circle_y), circle_radius)
+      if(i == self.cur_page - 1):
+        pygame.draw.circle(self.image, pygame.Color("white"), (circle_x, circle_y), small_circle_radius)
