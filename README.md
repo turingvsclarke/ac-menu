@@ -19,7 +19,7 @@ Check out the [Wiki](https://github.com/cs-club-appdev/ac-menu/wiki) for informa
   * `->` (Right) and `<-` (Left) to navigate pages.
   * `/` to launch the game.
   
-## Key bindings
+## Key Bindings
  A list of our menu+hardware keybindings can be found on the wiki [here](https://github.com/cs-club-appdev/ac-menu/wiki/Key-Bindings)
   
  ## Contributing
