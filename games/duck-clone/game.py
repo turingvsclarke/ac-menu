@@ -6,8 +6,8 @@ from duck import Duck
 class Game(): #Game Object
     playerX = 0
     playerY = 0
-    screenX = 600
-    screenY = 600
+    screenX = 1920
+    screenY = 800
     playerSpeed = 4
     score = 0
     maxDucks = 7
@@ -18,7 +18,7 @@ class Game(): #Game Object
     randomDuckMax = 1000
     duckSpeedMin = -2
     duckSpeedMax = 2
-    duckSize = 40
+    duckSize = 50
     crossHairSize = 30
     startTime = 0
     timeLimit = 10000
@@ -50,7 +50,7 @@ class Game(): #Game Object
         self.screen.fill((150, 220, 235))
         myfont = pygame.font.SysFont("monospace", 20)
         scoreLabel = myfont.render("[Original Title Here]", 1, (255,0,0))
-        timeLabel = myfont.render("Insert Coin (Press Space)", 1, (255,0,0))
+        timeLabel = myfont.render("Insert Coin (Press Button 1)", 1, (255,0,0))
         self.screen.blit(scoreLabel, (10, 10))
         self.screen.blit(timeLabel, (10, 40))
 
@@ -134,9 +134,10 @@ class Game(): #Game Object
         #catching pygame generated events
         for event in pygame.event.get():
             #closes both the pygame module and forces the program to end
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SLASH:
+                    pygame.quit()
+                    sys.exit()
 
             if event.type == pygame.VIDEORESIZE:
                 self.adjustScreen(event.dict['size'])
