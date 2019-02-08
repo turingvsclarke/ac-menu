@@ -34,6 +34,7 @@ class Grid (Sprite):
 
     # list of Page objects
     self.pages = self.create_pages (games)
+    self.pages_length = len(self.pages)
 
     # current_page is a cache of the currently active Page object
     self.current_page = self.pages[self.page_index]
@@ -56,7 +57,7 @@ class Grid (Sprite):
         page = Page (page_games[:], self.rect.x, self.rect.y, self.width, self.height)
         pages.append (page)
 
-        page_games.clear()
+        page_games.clear()  
 
       # add the game to page_games
       game = games[index]
