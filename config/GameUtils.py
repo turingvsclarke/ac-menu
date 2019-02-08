@@ -1,6 +1,6 @@
 import os
 import json
-from Game import Game
+from elements.Game import Game
 
 class GameUtils:
 

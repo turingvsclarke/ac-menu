@@ -1,10 +1,10 @@
 import pygame
-from Menu import Menu
-from InputCommandFlyweightFactory import InputCommandFlyweightFactory
-import Colors
+from elements.Menu import Menu
+from input.InputCommandFlyweightFactory import InputCommandFlyweightFactory
+from config import Colors
 import json
 
-config = open ("config.json").read ()
+config = open ("config/config.json").read ()
 data = json.loads (config)
 WINDOW_WIDTH = data["window"]["width"]
 WINDOW_HEIGHT = data["window"]["height"]

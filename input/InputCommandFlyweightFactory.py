@@ -1,10 +1,10 @@
-from LeftCommand import LeftCommand
-from RightCommand import RightCommand
-from UpCommand import UpCommand
-from DownCommand import DownCommand
-from PageLeftCommand import PageLeftCommand
-from PageRightCommand import PageRightCommand
-from PageEnterCommand import PageEnterCommand
+from input.LeftCommand import LeftCommand
+from input.RightCommand import RightCommand
+from input.UpCommand import UpCommand
+from input.DownCommand import DownCommand
+from input.PageLeftCommand import PageLeftCommand
+from input.PageRightCommand import PageRightCommand
+from input.PageEnterCommand import PageEnterCommand
 # Factory class responsible for instantiating Navigation Commands
 class InputCommandFlyweightFactory (object):
   def __init__ (self):

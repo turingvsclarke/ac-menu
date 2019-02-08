@@ -1,6 +1,6 @@
 import pygame
-from Sprite import Sprite
-import Colors
+from elements.Sprite import Sprite
+from config import Colors
 
 # Represents the game windows within the menu
 class GridElement (Sprite):

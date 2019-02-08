@@ -1,10 +1,10 @@
 import pygame
-from InfoPane import InfoPane
-from Grid import Grid
-import Colors
+from elements.InfoPane import InfoPane
+from elements.Grid import Grid
+from config import Colors
 import json 
 
-config = open ("config.json").read ()
+config = open ("config/config.json").read ()
 data = json.loads (config)
 GAMES_DIR = data["gamesDir"]
 

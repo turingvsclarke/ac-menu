@@ -1,4 +1,4 @@
-from InputCommand import InputCommand
+from input.InputCommand import InputCommand
 
 class PageLeftCommand (InputCommand):
   def __init__ (self):

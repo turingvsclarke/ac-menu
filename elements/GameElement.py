@@ -1,5 +1,5 @@
 import pygame
-from Sprite import Sprite
+from elements.Sprite import Sprite
 
 class GameElement (Sprite):
   def __init__ (self, game, background_color, x, y, width, height):
@@ -9,7 +9,7 @@ class GameElement (Sprite):
       icon = pygame.image.load("{}icon.png".format(game.directory))
       icon = pygame.transform.scale(icon, dimensions)
     except:
-      icon = pygame.image.load("default.png")
+      icon = pygame.image.load("config/default.png")
       icon = pygame.transform.scale(icon, dimensions)
     Sprite.__init__ (self, icon, x, y, width, height)
 
