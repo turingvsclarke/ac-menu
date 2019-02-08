@@ -1,0 +1,15 @@
+{
+    "window": {
+        "width": 1920,
+        "height": 1080
+    },
+    "grid": {
+        "rowLength": 3,
+        "colLength": 4
+    },
+    "gameElement": {
+        "xPos": 25,
+        "yPos": 13
+    },
+    "gamesDir": "./games/"
+}

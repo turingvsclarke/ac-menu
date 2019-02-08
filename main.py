@@ -2,9 +2,12 @@ import pygame
 from Menu import Menu
 from InputCommandFlyweightFactory import InputCommandFlyweightFactory
 import Colors
+import json
 
-WINDOW_WIDTH = 1600
-WINDOW_HEIGHT = 800
+config = open ("config.json").read ()
+data = json.loads (config)
+WINDOW_WIDTH = data["window"]["width"]
+WINDOW_HEIGHT = data["window"]["height"]
 
 pygame.init ()
 

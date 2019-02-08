@@ -2,8 +2,11 @@ import pygame
 from InfoPane import InfoPane
 from Grid import Grid
 import Colors
+import json 
 
-GAMES_DIR = "./games/"
+config = open ("config.json").read ()
+data = json.loads (config)
+GAMES_DIR = data["gamesDir"]
 
 class Menu (object):
   def __init__(self, screen):
