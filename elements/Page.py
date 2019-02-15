@@ -1,11 +1,11 @@
 import pygame
-from Sprite import Sprite
-from GameElement import GameElement
-from GridElement import GridElement
-import Colors
+from elements.Sprite import Sprite
+from elements.GameElement import GameElement
+from elements.GridElement import GridElement
+from config import Colors
 import json 
 
-config = open ("config.json").read ()
+config = open ("config/config.json").read ()
 data = json.loads (config)
 ROW_LENGTH = data["grid"]["rowLength"]
 COL_LENGTH = data["grid"]["colLength"]

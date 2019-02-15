@@ -1,13 +1,12 @@
-from InputCommand import InputCommand
+from input.InputCommand import InputCommand
 
-class UpCommand (InputCommand):
+class DownCommand (InputCommand):
   def __init__ (self):
     InputCommand.__init__ (self)
 
   def execute (self, grid):
     page = grid.get_current_page ()
     grid_elements = page.get_grid_elements ()
-    size = len (grid_elements)
     selected = page.get_selected ()
     row_length = page.get_row_length ()
 
@@ -15,12 +14,9 @@ class UpCommand (InputCommand):
     grid_elements[selected].toggle_selected ()
 
     # calculate new selected element
-    new_selected = selected - row_length
-    if new_selected < 0:
-      rows = size // row_length
-      new_selected = (rows * row_length) + selected
-      if new_selected >= size:
-        new_selected = new_selected - row_length
+    new_selected = selected + row_length
+    if new_selected >= len (grid_elements):
+      new_selected = selected % row_length
 
     page.set_selected (new_selected)
 
