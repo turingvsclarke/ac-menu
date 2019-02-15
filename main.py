@@ -1,5 +1,4 @@
 import pygame
-from pygame.locals import*
 from Menu import Menu
 from InputCommandFlyweightFactory import InputCommandFlyweightFactory
 import Colors
