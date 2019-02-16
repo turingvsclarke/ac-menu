@@ -1,0 +1,6 @@
+{
+	"title": "Block Fight",
+	"author": "Christopher Ash, Seth Fuller",
+	"language": "python",
+	"command": "python3 src/BlockFight.py"
+}
