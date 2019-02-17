@@ -1,0 +1,6 @@
+{
+	"title": "Pong",
+	"author": "Daniel Peach",
+	"language": "python",
+	"command": "python Pong.py"
+}
