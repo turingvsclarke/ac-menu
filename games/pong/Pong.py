@@ -18,11 +18,7 @@ class Pong(Game):
         self.labels = []
 
     def handle_collisions(self):
-        print("handling collisions")
         hit_time = pygame.time.get_ticks()
-        print("hit time: {}".format(hit_time))
-        print("last hit time: {}".format(Ball.last_hit))
-        print("time since last hit: {}".format(hit_time - Ball.last_hit))
         if hit_time - Ball.last_hit < 100:
             return
         Ball.last_hit = hit_time
@@ -99,16 +95,16 @@ class Pong(Game):
 
     def add_handlers(self):
         for player in self.players:
-            super().add_keydown_handler(player.up_key, player.keydown_handler)
-            super().add_keydown_handler(player.down_key, player.keydown_handler)
-            super().add_keyup_handler(player.up_key, player.keyup_handler)
-            super().add_keyup_handler(player.down_key, player.keyup_handler)
+            super(self).add_keydown_handler(player.up_key, player.keydown_handler)
+            super(self).add_keydown_handler(player.down_key, player.keydown_handler)
+            super(self).add_keyup_handler(player.up_key, player.keyup_handler)
+            super(self).add_keyup_handler(player.down_key, player.keyup_handler)
 
 
     def add_objects(self):
-        super().add_objects(self.ball)
+        super(self).add_objects(self.ball)
         for player in self.players:
-            super().add_objects(player.paddle)
+            super(self).add_objects(player.paddle)
 
 
 def main():
