@@ -4,7 +4,7 @@ import config
 from collections import defaultdict
 
 
-class Game:
+class Game(object):
     def __init__(self, window_size, caption, frame_rate):
         self._game_over = False
         pygame.init()

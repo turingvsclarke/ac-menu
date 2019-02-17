@@ -95,14 +95,14 @@ class Pong(Game):
 
     def add_handlers(self):
         for player in self.players:
-            super(self).add_keydown_handler(player.up_key, player.keydown_handler)
-            super(self).add_keydown_handler(player.down_key, player.keydown_handler)
-            super(self).add_keyup_handler(player.up_key, player.keyup_handler)
-            super(self).add_keyup_handler(player.down_key, player.keyup_handler)
+            super(Game, self).add_keydown_handler(player.up_key, player.keydown_handler)
+            super(Game, self).add_keydown_handler(player.down_key, player.keydown_handler)
+            super(Game, self).add_keyup_handler(player.up_key, player.keyup_handler)
+            super(Game, self).add_keyup_handler(player.down_key, player.keyup_handler)
 
 
     def add_objects(self):
-        super(self).add_objects(self.ball)
+        super(Game, self).add_objects(self.ball)
         for player in self.players:
             super(self).add_objects(player.paddle)
 
